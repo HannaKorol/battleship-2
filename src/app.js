@@ -75,10 +75,7 @@ function handlePlayerAttack(event) {
   }
 }
 
-
-
 /* ------------------------------------------------------computer Turn-------------------------------------*/
-
 
 // Computer stroke
 function computerTurn() {

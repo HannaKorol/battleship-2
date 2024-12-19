@@ -30,12 +30,12 @@ export default class Gameboard {
 
   // Ship placement
   placeShip(x, y, length, isHorizontal = true) {
-    const ship = new Ship(length);
+    const ship = new Ship(length, x, y, isHorizontal); // Передаём направление
     const positions = [];
 
     for (let i = 0; i < length; i++) {
-      const posX = isHorizontal ? x + i : x;
-      const posY = isHorizontal ? y : y + i;
+      const posX = isHorizontal ? x + i : x; // Сдвиг по X
+      const posY = isHorizontal ? y : y + i; // Сдвиг по Y
 
       if (posX >= 10 || posY >= 10 || this.board[posY][posX] !== null) {
         throw new Error("Invalid placement");
@@ -58,9 +58,8 @@ export default class Gameboard {
       return false;
     }
 
-    // Do damage only in a specific cell
     const ship = this.board[y][x];
-    ship.hit(x, y);
+    ship.hit(x, y); // Обновляем попадание в корабле
     return true;
   }
 
